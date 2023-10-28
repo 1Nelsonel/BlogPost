@@ -20,16 +20,6 @@ type Category struct {
     CreatedAt time.Time `gorm:"autoCreateTime;not null"`
 }
 
-// type Blog struct {
-
-// 	ID       uint `json:"id" gorm:"primaryKey"`
-// 	Title string    `json:"title" gorm:"not null;column:title;size:255"`
-// 	Author      string    `gorm:"type:varchar(255);not null"`
-// 	Category    string    `json:"category" gorm:"not null;column:category;size:255"`
-// 	Content     string    `gorm:"type:text;not null;column:content"`
-//     PublishedAt time.Time `gorm:"autoCreateTime;not null"`
-
-// }
 
 type Blog struct {
     ID          uint   `json:"id" gorm:"primaryKey"`

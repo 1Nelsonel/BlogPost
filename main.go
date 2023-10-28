@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/gofiber/template/html/v2"
 )
 
 func init()  {
@@ -21,8 +22,13 @@ func main()  {
 	}
 
 	defer sqlDb.Close()
+	// Create a new engine
+    engine := html.New("./views", ".html")
 
-	app := fiber.New()
+	  // Pass the engine to the Views
+	  app := fiber.New(fiber.Config{
+        Views: engine,
+    })
 
 	// Initialize default config
 	app.Use(logger.New())

@@ -19,10 +19,19 @@ func ListAuthors(c *fiber.Ctx) error {
 	var Author []model.Author
 	db.Find(&Author)
 
-	context["author_records"] =Author
+	context["author_records"] = Author
 
 	c.SendStatus(200)
-	return c.JSON(context)	
+
+	// return c.SendFile("./views/authors.html")
+
+     // Render the HTML template using Fiber's template engine
+    if err := c.SendFile("./views/authors.html"); err != nil {
+        return err
+    }
+
+    return c.SendFile("./views/authors.html")
+    
 }
 
 // create author

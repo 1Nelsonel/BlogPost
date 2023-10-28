@@ -11,7 +11,7 @@ func SetupRoutes(app *fiber.App) {
 	app.Put("/update/post/:id", controler.UpdatePost)
 	app.Delete("/delete/post/:id", controler.DeletePost)
 
-	app.Get("/author", controler.ListAuthors)
+	app.Get("/authors", controler.ListAuthors)
 	app.Post("create/author", controler.CreateAuthor)
 	app.Put("/update/author/:id", controler.UpdateAuthor)
 	app.Delete("/delete/author/:id", controler.DeleteAuthor)
