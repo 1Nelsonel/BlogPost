@@ -12,7 +12,7 @@ func SetupRoutes(app *fiber.App) {
 	app.Delete("/delete/post/:id", controler.DeletePost)
 
 	app.Get("/authors", controler.ListAuthors)
-	app.Post("create/author", controler.CreateAuthor)
+	app.Post("/createauthor", controler.CreateAuthor)
 	app.Put("/update/author/:id", controler.UpdateAuthor)
 	app.Delete("/delete/author/:id", controler.DeleteAuthor)
 }

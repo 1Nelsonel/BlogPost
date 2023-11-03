@@ -9,11 +9,11 @@ import (
 	"github.com/gofiber/template/html/v2"
 )
 
-func init()  {
+func init() {
 	database.ConnectDB()
 }
 
-func main()  {
+func main() {
 
 	sqlDb, err := database.DBConn.DB()
 
@@ -23,25 +23,29 @@ func main()  {
 
 	defer sqlDb.Close()
 	// Create a new engine
-    engine := html.New("./views", ".html")
+	engine := html.New("./views", ".html")
 
-	  // Pass the engine to the Views
-	  app := fiber.New(fiber.Config{
-        Views: engine,
-    })
+	// Pass the engine to the Views
+	app := fiber.New(fiber.Config{
+		Views: engine,
+	})
+
+	app.Static("/", "./public")
 
 	// Initialize default config
 	app.Use(logger.New())
 
+
+
 	app.Use(cors.New())
-	
+
 	router.SetupRoutes(app)
 
 	// handle unavailable route
 	app.Use(func(c *fiber.Ctx) error {
-	 return c.SendStatus(404) // => 404 "Not Found"
+		return c.SendStatus(404) // => 404 "Not Found"
 	})
 
 	app.Listen(":3000")
-	
+
 }
